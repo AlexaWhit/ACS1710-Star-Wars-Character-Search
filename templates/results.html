@@ -6,12 +6,13 @@ Results
 
 {% block content %}
 <h2><u>{{character.name}} Info:</u></h2>
-    {% if character.name %}
+    {% if character.name and homeworld.name %}
         <p>Name: <em>{{character.name}}</em></p>
         <p>Height: <em>{{character.height}}cm</em></p>
         <p>Weight: <em>{{character.mass}}kg</em></p>
         <p>Hair Color: <em>{{character.hair_color}}</em></p>
         <p>Eye Color: <em>{{character.eye_color}}</em></p>
+        <p>Home World: <em>{{homeworld.name}}</em></p>
     {% else %}
         <p>ID doesn't exist. Please enter a valid character ID.</p> 
     {% endif %}
@@ -20,6 +21,8 @@ Results
 <ul>
 {% for film in films %}
     <li>{{film.title}}</li>
+{% else %}
+    <p>ID doesn't exist. Please enter a valid character ID.</p> 
 {% endfor %}
 </ul>
 {% endblock content %}
