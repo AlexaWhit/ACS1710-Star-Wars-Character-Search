@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Star Wars Character Search - Form   
+{% endblock title %}
+
+{% block content %}
+    <header>    
+        <h1>Star Wars Character Search</h1>
+    </header>
+    <form action="/results" method="GET">
+        <p>Type in the ID of your favorite Star Wars Character</p>
+        <input type="text" name="character_id">
+        <button type="submit">Search</button>
+    </form> 
+{% endblock content %}
