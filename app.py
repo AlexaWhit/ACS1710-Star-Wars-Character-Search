@@ -19,15 +19,29 @@ def results():
     character_id = request.args.get('character_id')
     response_people = requests.get(apiUrl + 'people/' + character_id)
     character = json.loads(response_people.content)
-    films = character['films']
-    response_films = list()
-    for film in films:
-        response_films.append(json.loads(requests.get(film).content))
-    
 
-    context = {'character': character, 'films': response_films}
+    try:
+        films = character['films']
+        response_films = list()
+        for film in films:
+            response_films.append(json.loads(requests.get(film).content))
+    except KeyError:
+        response_films = ''
+
+    try:
+        response_homeworld = requests.get(character['homeworld'])
+        homeworld = json.loads(response_homeworld.content)
+    except KeyError:
+        homeworld = ''
+
+    context = {
+        'character': character, 
+        'films': response_films,
+        'homeworld': homeworld,
+        }
     return render_template('results.html', **context)
 
+ 
 
 if __name__ == '__main__':
     app.config['ENV'] = 'development'
