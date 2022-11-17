@@ -9,6 +9,11 @@ body {
     min-height: 100vh;
 }
 
+body h1 {
+    font-family: 'Star Jedi', arial;
+    text-shadow: 4px 4px 4px rgb(168, 232, 171);
+}
+
 ul {
     list-style-type: none;
 }
